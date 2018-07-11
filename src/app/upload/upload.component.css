@@ -1,0 +1,82 @@
+.container {
+    vertical-align: middle;
+}
+
+.header-section {
+    background-color: rgb(242, 243, 245);
+    text-align: center;
+    padding: 30px;
+    color: rgb(82, 101, 123);
+}
+
+.queue-section {
+    border-radius: 5px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.queue-table {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.container .btn-drop-zone {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: dashed 2px rgb(58, 136, 209);
+    border-radius: 5px;
+    text-align: center;
+    color: rgb(200, 210, 220);
+}
+
+/* When dragging a file over the drop zone */
+
+.nv-file-over {
+    border: dashed 2px rgb(122, 196, 140);
+}
+
+/* The upload button style */
+
+.btn-medium {
+    width: 180px;
+    line-height: 50px;
+    color: white;
+    background-color: rgb(58, 136, 209);
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.btn-medium:hover {
+    background-color: rgb(54, 126, 194);
+}
+
+/* The input button styling */
+
+#upload {
+    display: none;
+}
+
+p {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+span {
+    font-size: 10px;
+}
+
+th,
+td {
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
