@@ -25,6 +25,7 @@ import { UploadComponent } from './upload/upload.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
+import { UploadDirective } from './upload.directive';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +44,7 @@ const routes = [
     RegisterComponent,
     FilesComponent,
     UploadComponent,
+    UploadDirective,
   ],
   imports: [
     BrowserModule,
