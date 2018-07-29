@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html,
+
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
 body {
-    height: 100%;
+    margin: 0;
     font-family: 'Lato', 'Raleway', sans-serif;
 }
 
@@ -13,6 +19,11 @@ h3,
 p,
 span {
     font-weight: lighter;
+}
+
+h1.h1-def {
+    font-weight: 500px !important;
+    color: rgb(107, 212, 139);
 }
 
 .mat-cool {
@@ -25,10 +36,59 @@ span {
     font-size: 16px;
 }
 
+.mat-button {
+    font-weight: 900;
+}
+
+.mat-button:disabled {
+    color: white;
+}
+
 .center {
     margin: auto;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .fullWidth {
     width: 100%;
+}
+
+.field {
+    font-weight: 310;
+}
+
+.form-footer {
+    margin: 0px auto 20px;
+    padding: 2px 20px;
+    border: 1px solid #dadada;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50%;
+    text-align: center;
+    color: rgb(82, 101, 123);
+    background-color: #dadada;
+}
+
+.errors {
+    text-align: center;
+    padding: auto auto;
+    margin: 20px auto;
+    color: rgb(231, 77, 77);
+}
+
+.btn {
+    line-height: 35px;
+    color: white;
+    background-color: rgb(58, 136, 209);
+    border-radius: 2px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: rgb(54, 126, 194);
 }

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import * as $ from "jquery";
+import * as globals from '../globals';
+
+const helper = new JwtHelperService();
 
 @Component({
     selector: 'upload-component',
@@ -20,7 +24,9 @@ export class UploadComponent {
 
 
     constructor(private http: HttpClient, private router: Router) {
-        if (!localStorage.getItem('token')) {
+        if (helper.isTokenExpired(localStorage.getItem(globals.TOKEN_ID))) {
+            localStorage.removeItem(globals.TOKEN_ID);
+            localStorage.removeItem(globals.EXPIRATION);
             this.router.navigate(['/login']);
         }
     }
@@ -99,7 +105,12 @@ export class UploadComponent {
         const formData = new FormData();
         formData.append(file.name, file);
 
+        const headers = new HttpHeaders({
+            'security-token': localStorage.getItem(globals.TOKEN_ID)
+        })
+
         const uploadReq = new HttpRequest('POST', 'http://localhost:33644/api/upload', formData, {
+            headers: headers,
             reportProgress: true,
         });
 

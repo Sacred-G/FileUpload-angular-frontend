@@ -1,5 +1,4 @@
 import { Directive, HostListener, HostBinding, EventEmitter, Output } from '@angular/core';
-import { renderTemplate } from '../../node_modules/@angular/core/src/render3/instructions';
 
 @Directive({
   selector: '[appUpload]'

@@ -1,19 +1,22 @@
-<mat-card>
-    <mat-card-title>
-        <span>Sign In</span>
-    </mat-card-title>
-    <mat-card-content>
+<div class='container'>
+    <h1 class="h1-def text-center">Sign in</h1>
+    <div class="login-form">
+        <p>Sign in with your email address</p>
         <form [formGroup]="form" (ngSubmit)="login(form.value)">
-            <mat-form-field class='fullWidth'>
-                <input name='question' matInput type="email" placeholder="Email" formControlName='email'>
+            <p *ngIf="error" class="errors">{{ error }}</p>
+            <mat-form-field class='fullWidth field'>
+                <input name='email' matInput type="email" placeholder="E-mail address" formControlName='email'>
             </mat-form-field>
             <mat-form-field class='fullWidth'>
                 <input name='password' matInput type="password" placeholder="Password" formControlName='password'>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="!form.valid">Login</button>
-            <button mat-raised-button color="primary" routerLink="/register">Register</button>
+            <button mat-button class='btn fullWidth' [disabled]="!form.valid">Sign in</button>
         </form>
-    </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
-</mat-card>
+    </div>
+    <div class='form-footer'>
+        <p>
+            Don't have an account?
+            <a class='reg-link' routerLink="/register">Register here!</a>
+        </p>
+    </div>
+</div>

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
+import { JwtModule } from '@auth0/angular-jwt';
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -25,7 +26,8 @@ import { UploadComponent } from './upload/upload.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
-import { UploadDirective } from './upload.directive';
+import { ValidationService } from './services/validation.service';
+import { UploadDirective } from './directives/upload.directive';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +36,10 @@ const routes = [
   { path: 'files', component: FilesComponent },
   { path: 'upload', component: UploadComponent },
 ]
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -53,6 +59,13 @@ const routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4002'],
+        blacklistedRoutes: ['localhost:4002/api/account/']
+      }
+    }),
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
@@ -61,7 +74,7 @@ const routes = [
     MatPaginatorModule,
     FileUploadModule
   ],
-  providers: [AuthService, ApiService, {
+  providers: [AuthService, ApiService, ValidationService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

@@ -1,11 +1,22 @@
-<mat-card>
-    <mat-card-title>
-        <span>Register</span>
-    </mat-card-title>
-    <mat-card-content>
+<div class='container'>
+    <h1 class="h1-def text-center">Register</h1>
+    <div class="register-form">
+        <p>Create an account by filling out the form below</p>
         <form [formGroup]="form" (ngSubmit)="register(form.value)">
-            <mat-form-field class='fullWidth'>
-                <input name='question' matInput type="email" placeholder="Email" formControlName='email'>
+            <div class='errors' *ngIf='errors'>
+                <ul *ngFor='let err of errors'>
+                    <li>{{ err.description }}</li>
+                </ul>
+            </div>
+            
+            <mat-form-field class='fullWidth field'>
+                <input name='firstName' matInput type="text" placeholder="First name" formControlName='firstName'>
+            </mat-form-field>
+            <mat-form-field class='fullWidth field'>
+                <input name='lastName' matInput type="text" placeholder="Last name" formControlName='lastName'>
+            </mat-form-field>
+            <mat-form-field class='fullWidth field'>
+                <input name='email' matInput type="email" placeholder="E-mail address" formControlName='email'>
             </mat-form-field>
             <mat-form-field class='fullWidth'>
                 <input name='password' matInput type="password" placeholder="Password" formControlName='password'>
@@ -13,9 +24,13 @@
             <mat-form-field class='fullWidth'>
                 <input name='confirmPassword' matInput type="password" placeholder="Confirm Password" formControlName='confirmPassword'>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="!form.valid">Create Account</button>
+            <button mat-button class='btn fullWidth' [disabled]="!form.valid">Register</button>
         </form>
-    </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
-</mat-card>
+    </div>
+    <div class='form-footer'>
+        <p>
+            Already have an account?
+            <a class='reg-link' routerLink="/login">Sign in here!</a>
+        </p>
+    </div>
+</div>
