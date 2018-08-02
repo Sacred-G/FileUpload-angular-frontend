@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from '../services/auth.service';
+
 import * as $ from "jquery";
 import * as globals from '../globals';
 import * as API from '../env';
-
-const helper = new JwtHelperService();
 
 @Component({
     selector: 'upload-component',
@@ -24,10 +23,8 @@ export class UploadComponent {
     private message: string[] = [];
 
 
-    constructor(private http: HttpClient, private router: Router) {
-        if (helper.isTokenExpired(localStorage.getItem(globals.TOKEN_ID))) {
-            localStorage.removeItem(globals.TOKEN_ID);
-            localStorage.removeItem(globals.EXPIRATION);
+    constructor(private http: HttpClient, private router: Router, private auth: AuthService) {
+        if (!auth.isAuthenticated) {
             this.router.navigate(['/login']);
         }
     }
@@ -74,8 +71,11 @@ export class UploadComponent {
         formData.append(file.name, file);
 
         const headers = new HttpHeaders({
-            'security-token': localStorage.getItem(globals.TOKEN_ID)
+            'id_token': localStorage.getItem(globals.TOKEN_ID),
+            'access_token': localStorage.getItem(globals.ACCESS_TOKEN)
         })
+
+        headers.set('authorization', `Bearer ${localStorage.getItem(globals.ACCESS_TOKEN)}`)
 
         const uploadReq = new HttpRequest('POST', `${API.website}/upload`, formData, {
             headers: headers,

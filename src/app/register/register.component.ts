@@ -37,7 +37,7 @@ export class RegisterComponent {
     register(credentials) {
         this.auth.register(credentials).subscribe(res => {
             console.log("Account successfully registered");
-            this.auth.authenticate(res);
+            this.auth.setSession(res);
         },
         (err) => { this.errors = err.error });
     }

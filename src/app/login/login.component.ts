@@ -27,7 +27,7 @@ export class LoginComponent {
         this.auth.login(credentials).subscribe(
             res => {
                 console.log("User has logged in");
-                this.auth.authenticate(res);
+                this.auth.setSession(res);
             },
             (err) => { this.error = err.error });
     }
