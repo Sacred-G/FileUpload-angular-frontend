@@ -20,7 +20,7 @@ export class RegisterComponent {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             email: ['', [Validators.required, ValidationService.emailValidator]],
-            password: ['', Validators.required],
+            password: ['', [Validators.required, ValidationService.passwordValidator]],
             confirmPassword: ['', Validators.required]
         });
     }
@@ -39,7 +39,7 @@ export class RegisterComponent {
             console.log("Account successfully registered");
             this.auth.authenticate(res);
         },
-        (err) => { this.errors = err.error});
+        (err) => { this.errors = err.error });
     }
 }
 

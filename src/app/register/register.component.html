@@ -12,18 +12,23 @@
             <mat-form-field class='fullWidth field'>
                 <input name='firstName' matInput type="text" placeholder="First name" formControlName='firstName'>
             </mat-form-field>
+            <control-messages [control]="form.controls.firstName"></control-messages>
             <mat-form-field class='fullWidth field'>
                 <input name='lastName' matInput type="text" placeholder="Last name" formControlName='lastName'>
             </mat-form-field>
+            <control-messages [control]="form.controls.lastName"></control-messages>
             <mat-form-field class='fullWidth field'>
                 <input name='email' matInput type="email" placeholder="E-mail address" formControlName='email'>
             </mat-form-field>
+            <control-messages [control]="form.controls.email"></control-messages>
             <mat-form-field class='fullWidth'>
                 <input name='password' matInput type="password" placeholder="Password" formControlName='password'>
             </mat-form-field>
+            <control-messages [control]="form.controls.password"></control-messages>
             <mat-form-field class='fullWidth'>
                 <input name='confirmPassword' matInput type="password" placeholder="Confirm Password" formControlName='confirmPassword'>
             </mat-form-field>
+            <control-messages [control]="form.controls.confirmPassword"></control-messages>
             <button mat-button class='btn fullWidth' [disabled]="!form.valid">Register</button>
         </form>
     </div>

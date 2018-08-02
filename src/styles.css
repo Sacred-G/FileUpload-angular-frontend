@@ -2,6 +2,10 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+* {
+    box-sizing: border-box;
+}
+
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html {
     -ms-text-size-adjust: 100%;
@@ -72,6 +76,15 @@ h1.h1-def {
     background-color: #dadada;
 }
 
+.reg-link {
+    text-decoration: none;
+    color: rgb(68, 156, 238);
+}
+
+.reg-link:hover {
+    color: rgb(54, 126, 194);
+}
+
 .errors {
     text-align: center;
     padding: auto auto;
@@ -82,7 +95,7 @@ h1.h1-def {
 .btn {
     line-height: 35px;
     color: white;
-    background-color: rgb(58, 136, 209);
+    background-color: rgb(68, 156, 238);
     border-radius: 2px;
     margin-top: 5px;
     margin-bottom: 25px;

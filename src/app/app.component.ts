@@ -5,15 +5,15 @@ import * as globals from './globals';
 const helper = new JwtHelperService();
 
 @Component({
-  selector: 'app-root',
-  template: '<nav></nav><router-outlet></router-outlet>'
+    selector: 'app-root',
+    template: '<nav></nav><router-outlet></router-outlet>'
 })
 export class AppComponent {
 
-  constructor() {
-    if (helper.isTokenExpired(localStorage.getItem(globals.TOKEN_ID))) {
-      localStorage.removeItem(globals.TOKEN_ID);
-      localStorage.removeItem(globals.EXPIRATION);
+    constructor() {
+        if (helper.isTokenExpired(localStorage.getItem(globals.TOKEN_ID))) {
+            localStorage.removeItem(globals.TOKEN_ID);
+            localStorage.removeItem(globals.EXPIRATION);
+        }
     }
-  }
 }

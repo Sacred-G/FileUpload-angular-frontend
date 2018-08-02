@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as globals from '../globals';
+import * as API from '../env';
 
 const helper = new JwtHelperService();
 
@@ -19,11 +20,11 @@ export class AuthService {
     }
 
     register(credentials) {
-        return this.http.post<any>(`http://localhost:33644/api/account/register`, credentials);
+        return this.http.post<any>(`${API.website}/account/register`, credentials);
     }
 
     login(credentials) {
-        return this.http.post<any>(`http://localhost:33644/api/account/login`, credentials);
+        return this.http.post<any>(`${API.website}/api/account/login`, credentials);
     }
 
     authenticate(res) {

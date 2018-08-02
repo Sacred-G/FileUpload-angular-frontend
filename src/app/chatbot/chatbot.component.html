@@ -1,0 +1,22 @@
+<div class='container'>
+    <div class='window'>
+        <header class='middle'>
+            Begin talking to start a conversation.
+        </header>
+
+        <div class='chatBox'>
+            <div class="chat-content" ngx-auto-scroll lock-y-offset="10" observe-attributes>
+                <div class='message {{message.class}}' *ngFor='let message of messages;'>
+                    <p class="text">{{ message.value }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class='chatForm'>
+            <input #inField type="text" placeholder="Enter a message" (keydown.enter)="onKeyDown($event); inField.value = '';">
+            <div class='send' (click)="sendMessage(inField.value); inField.value = '';">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</div>

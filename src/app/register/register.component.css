@@ -20,15 +20,6 @@
     background-color: white;
 }
 
-.reg-link {
-    text-decoration: none;
-    color: rgb(58, 136, 209);
-}
-
-.reg-link:hover {
-    color: rgb(54, 126, 194);
-}
-
 ul {
     text-align: left;
     margin: 0;

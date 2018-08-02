@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as $ from "jquery";
 import * as globals from '../globals';
+import * as API from '../env';
 
 const helper = new JwtHelperService();
 
@@ -38,39 +39,6 @@ export class UploadComponent {
                 $("#upload:hidden").trigger('click');
             });
         });
-    }
-
-    derp(event) {
-        this.files = event.files;
-        for (const droppedFile of event.files) {
-
-            // Is it a file?
-            if (droppedFile.fileEntry.isFile) {
-                const fileEntry = droppedFile.fileEntry;
-                fileEntry.file((file: File) => {
-
-                    // Here you can access the real file
-                    console.log(droppedFile.relativePath, file);
-
-                    /**
-                    // You could upload it like this:
-                    const formData = new FormData()
-                    formData.append('logo', file, relativePath)
-           
-                    // Headers
-                    const headers = new HttpHeaders({
-                      'security-token': 'mytoken'
-                    })
-           
-                    this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-                    .subscribe(data => {
-                      // Sanitized logo returned from backend
-                    })
-                    **/
-
-                });
-            }
-        }
     }
 
     add(files) {
@@ -109,7 +77,7 @@ export class UploadComponent {
             'security-token': localStorage.getItem(globals.TOKEN_ID)
         })
 
-        const uploadReq = new HttpRequest('POST', 'http://localhost:33644/api/upload', formData, {
+        const uploadReq = new HttpRequest('POST', `${API.website}/upload`, formData, {
             headers: headers,
             reportProgress: true,
         });

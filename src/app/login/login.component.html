@@ -7,9 +7,11 @@
             <mat-form-field class='fullWidth field'>
                 <input name='email' matInput type="email" placeholder="E-mail address" formControlName='email'>
             </mat-form-field>
+            <control-messages [control]="form.controls.email"></control-messages>
             <mat-form-field class='fullWidth'>
                 <input name='password' matInput type="password" placeholder="Password" formControlName='password'>
             </mat-form-field>
+            <control-messages [control]="form.controls.password"></control-messages>
             <button mat-button class='btn fullWidth' [disabled]="!form.valid">Sign in</button>
         </form>
     </div>
