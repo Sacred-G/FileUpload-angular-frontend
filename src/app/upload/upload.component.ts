@@ -25,7 +25,7 @@ export class UploadComponent {
 
     constructor(private http: HttpClient, private router: Router, private auth: AuthService) {
         if (!auth.isAuthenticated) {
-            this.router.navigate(['/login']);
+            router.navigate(['/login']);
         }
     }
 

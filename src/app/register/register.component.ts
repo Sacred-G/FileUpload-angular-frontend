@@ -39,7 +39,8 @@ export class RegisterComponent {
             console.log("Account successfully registered");
             this.auth.setSession(res);
         },
-        (err) => { this.errors = err.error });
+        (err) => { this.errors = err.error; console.log(this.errors) });
+
     }
 }
 

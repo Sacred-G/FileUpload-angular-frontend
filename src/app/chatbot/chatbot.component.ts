@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChatBotService } from '../services/chatbot.service';
+import { AuthService } from '../services/auth.service';
 import * as globals from '../globals';
 
 const helper = new JwtHelperService();
@@ -15,11 +17,8 @@ export class ChatBotComponent {
     message = {};
     messages: Array<any> = [];
 
-    constructor(private chatbot: ChatBotService) {
-        if (helper.isTokenExpired(localStorage.getItem(globals.TOKEN_ID))) {
-            localStorage.removeItem(globals.TOKEN_ID);
-            localStorage.removeItem(globals.EXPIRATION);
-        }
+    constructor(private router: Router, private chatbot: ChatBotService, private auth: AuthService) {
+        auth.isAuthenticated;
     }
 
     sendMessage(message) {

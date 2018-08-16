@@ -5,7 +5,7 @@
         <form [formGroup]="form" (ngSubmit)="register(form.value)">
             <div class='errors' *ngIf='errors'>
                 <ul *ngFor='let err of errors'>
-                    <li>{{ err.description }}</li>
+                    <li>{{ err }}</li>
                 </ul>
             </div>
             

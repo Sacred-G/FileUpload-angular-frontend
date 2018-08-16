@@ -13,7 +13,7 @@ import * as globals from '../globals';
 export class FilesComponent {
     constructor(private api: ApiService, private router: Router, private auth: AuthService) {
         if (!auth.isAuthenticated) {
-            this.router.navigate(['/login']);
+            router.navigate(['/login']);
         }
     }
 
